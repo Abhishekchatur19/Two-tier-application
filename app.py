@@ -41,6 +41,38 @@ def submit():
     mysql.connection.commit()
     cur.close()
     return jsonify({'message': new_message})
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+@app.route("/")
+def dashboard():
+    return render_template("dashboard.html")
+
+@app.route("/customers")
+def customers():
+    return render_template("customers.html")
+
+@app.route("/leads")
+def leads():
+    return render_template("leads.html")
+
+@app.route("/tickets")
+def tickets():
+    return render_template("tickets.html")
+
+@app.route("/add-customer")
+def add_customer():
+    return render_template("add-customer.html")
+
+@app.route("/reports")
+def reports():
+    return render_template("reports.html")
+
+@app.route("/settings")
+def settings():
+    return render_template("settings.html")
+
 
 if __name__ == '__main__':
     init_db()
