@@ -1,15 +1,235 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Leads</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM Leads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f4f6f9;
+      display: flex;
+      color: #1f2937;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: 240px;
+      background: #0f172a;
+      min-height: 100vh;
+      padding: 20px;
+      color: #ffffff;
+    }
+
+    .sidebar h2 {
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 20px;
+    }
+
+    .sidebar ul { list-style: none; }
+
+    .sidebar li {
+      padding: 12px 15px;
+      margin-bottom: 8px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .sidebar li:hover,
+    .sidebar li.active {
+      background: #1e293b;
+    }
+
+    /* Main Content */
+    .main {
+      flex: 1;
+      padding: 24px;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+    }
+
+    .topbar h1 {
+      font-size: 24px;
+      font-weight: 600;
+    }
+
+    /* Actions */
+    .actions {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .actions input {
+      padding: 10px 14px;
+      border-radius: 10px;
+      border: 1px solid #d1d5db;
+      width: 260px;
+    }
+
+    .btn {
+      padding: 12px 18px;
+      background: #2563eb;
+      color: #ffffff;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .btn:hover { background: #1d4ed8; }
+
+    /* Table */
+    .table-container {
+      background: #ffffff;
+      padding: 20px;
+      border-radius: 16px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    thead {
+      background: #f9fafb;
+    }
+
+    th, td {
+      padding: 14px;
+      text-align: left;
+      font-size: 14px;
+    }
+
+    th {
+      font-weight: 600;
+      color: #374151;
+    }
+
+    tbody tr {
+      border-bottom: 1px solid #e5e7eb;
+    }
+
+    tbody tr:last-child { border-bottom: none; }
+
+    .status {
+      padding: 6px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 500;
+      display: inline-block;
+    }
+
+    .status.new { background: #e0f2fe; color: #075985; }
+    .status.contacted { background: #fef3c7; color: #92400e; }
+    .status.qualified { background: #dcfce7; color: #166534; }
+    .status.lost { background: #fee2e2; color: #991b1b; }
+
+    .action-link {
+      color: #2563eb;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 13px;
+    }
+
+    .action-link:hover { text-decoration: underline; }
+
+    @media (max-width: 768px) {
+      .sidebar { display: none; }
+      .actions { flex-direction: column; align-items: flex-start; }
+      .actions input { width: 100%; }
+    }
+  </style>
 </head>
 <body>
-  <h2>Lead Tracking</h2>
 
-  <ul>
-    <li>Lead Name: Amit Verma – Status: New</li>
-    <li>Lead Name: Neha Singh – Status: Contacted</li>
-    <li>Lead Name: Kunal Patil – Status: Qualified</li>
-  </ul>
+  <aside class="sidebar">
+    <h2>MyCRM</h2>
+    <ul>
+      <li>Dashboard</li>
+      <li class="active">Leads</li>
+      <li>Customers</li>
+      <li>Reports</li>
+      <li>Settings</li>
+      <li>Logout</li>
+    </ul>
+  </aside>
+
+  <main class="main">
+    <div class="topbar">
+      <h1>Leads</h1>
+      <span>Admin</span>
+    </div>
+
+    <div class="actions">
+      <input type="text" placeholder="Search leads..." />
+      <button class="btn">+ Add Lead</button>
+    </div>
+
+    <section class="table-container">
+      <table>
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Source</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Rahul Sharma</td>
+            <td>rahul@example.com</td>
+            <td>+91 9876543210</td>
+            <td>Website</td>
+            <td><span class="status new">New</span></td>
+            <td><a href="#" class="action-link">View</a></td>
+          </tr>
+          <tr>
+            <td>Anita Verma</td>
+            <td>anita@example.com</td>
+            <td>+91 9123456780</td>
+            <td>Referral</td>
+            <td><span class="status contacted">Contacted</span></td>
+            <td><a href="#" class="action-link">View</a></td>
+          </tr>
+          <tr>
+            <td>Suresh Kumar</td>
+            <td>suresh@example.com</td>
+            <td>+91 9988776655</td>
+            <td>Ads</td>
+            <td><span class="status qualified">Qualified</span></td>
+            <td><a href="#" class="action-link">View</a></td>
+          </tr>
+          <tr>
+            <td>Neha Singh</td>
+            <td>neha@example.com</td>
+            <td>+91 9090909090</td>
+            <td>Cold Call</td>
+            <td><span class="status lost">Lost</span></td>
+            <td><a href="#" class="action-link">View</a></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+  </main>
+
 </body>
 </html>
